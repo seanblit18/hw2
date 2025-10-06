@@ -80,7 +80,10 @@ void ProductParser::parseCommonProduct(std::istream& is,
     lineno++;
 }
 
-ProductBookParser::ProductBookParser() : ProductParser()
+ProductBookParser::ProductBookParser()
+{
+}
+ProductBookParser::~ProductBookParser()
 {
 }
 
@@ -128,14 +131,26 @@ std::string ProductBookParser::categoryID()
  * Your job to fill in the code to create a new book product
  * using the data members in this class and the parent ProductParser class
  */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Product* ProductBookParser::makeProduct()
 {
+    // seems like i need to
+        // dynamically allocate to make the new product? smthn like Product* example = new Product? 
+                                                                    // return example?
+        // read in via is >> name, price, qty
+            // now read in proper values for product specific info
+        // put category into category ID
+    Book* booky = new Book("book", prodName_, price_, qty_, isbn_, author_);
 
-
+    return booky;
 }
 
 
 ProductClothingParser::ProductClothingParser()
+{
+}
+
+ProductClothingParser::~ProductClothingParser()
 {
 }
 
@@ -183,9 +198,12 @@ std::string ProductClothingParser::categoryID()
  * Your job to fill in the code to create a new clothing product
  * using the data members in this class and the parent ProductParser class
  */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Product* ProductClothingParser::makeProduct()
 {
+    Clothing* elise = new Clothing("clothing", prodName_, price_, qty_, size_, brand_);
 
+    return elise;
 
 
 }
@@ -193,6 +211,10 @@ Product* ProductClothingParser::makeProduct()
 
 
 ProductMovieParser::ProductMovieParser()
+{
+}
+
+ProductMovieParser::~ProductMovieParser()
 {
 }
 
@@ -243,8 +265,10 @@ std::string ProductMovieParser::categoryID()
  * Your job to fill in the code to create a new movie product
  * using the data members in this class and the parent ProductParser class
  */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Product* ProductMovieParser::makeProduct()
 {
+    Movie* mov = new Movie("movie", prodName_, price_, qty_, genre_, rating_);
 
-
+    return mov;
 }
